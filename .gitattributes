@@ -1,0 +1,5 @@
+*.ts linguist-detectable
+*.tsx linguist-detectable
+*.sql linguist-detectable
+*.pgsql linguist-detectable
+*.md linguist-documentation
