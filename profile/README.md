@@ -1,5 +1,5 @@
-![SimpliTutor Dashboard Light](https://github.com/bemtutoringconsulting/.github-private/blob/main/images/lightmode.png?raw=true#gh-light-mode-only)
-![SimpliTutor Dashboard Dark](https://github.com/bemtutoringconsulting/.github-private/blob/main/images/darkmode.png#gh-dark-mode-only)
+![SimpliTutor Dashboard Light](https://github.com/SimpliTutor/.github/blob/main/images/lightmode.png?raw=true#gh-light-mode-only)
+![SimpliTutor Dashboard Dark](https://github.com/SimpliTutor/.github/blob/main/images/darkmode.png?raw=true#gh-dark-mode-only)
 
 
 ## SimpliTutor
@@ -19,7 +19,7 @@ SimpliTutor is an operations platform for tutoring businesses. Session schedulin
 
 <p align="center">
   <img
-    src="https://github.com/bemtutoringconsulting/.github-private/blob/main/images/demo2.png?raw=true"
+    src="https://github.com/SimpliTutor/.github/blob/main/images/demo2.png?raw=true"
     alt="SimpliTutor Dashboard"
     style="
       border-radius: 16px;
@@ -30,7 +30,7 @@ SimpliTutor is an operations platform for tutoring businesses. Session schedulin
 </p>
 <p align="center">
   <img
-    src="https://github.com/bemtutoringconsulting/.github-private/blob/main/images/demo1.png?raw=true"
+    src="https://github.com/SimpliTutor/.github/blob/main/images/demo1.png?raw=true"
     alt="SimpliTutor Dashboard"
     style="
       border-radius: 16px;
