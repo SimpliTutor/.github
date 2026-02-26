@@ -1,7 +1,6 @@
 ![SimpliTutor Dashboard Light](https://github.com/SimpliTutor/.github/blob/main/images/lightmode.png?raw=true#gh-light-mode-only)
 ![SimpliTutor Dashboard Dark](https://github.com/SimpliTutor/.github/blob/main/images/darkmode.png?raw=true#gh-dark-mode-only)
 
-
 ## SimpliTutor
 
 SimpliTutor is an operations platform for tutoring businesses. Session scheduling, student management, billing, and analytics—all in one place.
@@ -15,7 +14,6 @@ SimpliTutor is an operations platform for tutoring businesses. Session schedulin
 - [x] Role-based access (RBAC)
 - [x] At-risk student detection based on inactivity thresholds
 - [x] Session notes with parent email delivery
-
 
 <p align="center">
   <img
@@ -42,34 +40,49 @@ SimpliTutor is an operations platform for tutoring businesses. Session schedulin
 
 ## Tech Stack
 
-| Frontend | Backend | Database & Auth |
-|----------|---------|-----------------|
-| React 19 | Node.js 18+ | Supabase (PostgreSQL) |
-| TypeScript | Express.js | Firebase Auth |
-| Redux Toolkit | Socket.IO | Stripe |
-| Tailwind CSS | Nodemailer | |
-| shadcn/ui | | |
+| Frontend                      | Backend                | Infrastructure            |
+| :---------------------------- | :--------------------- | :------------------------ |
+| React 19 + TypeScript         | Node.js + Express      | Supabase (PostgreSQL)     |
+| Redux Toolkit + Redux Persist | Socket.IO              | Firebase Auth             |
+| Tailwind CSS 4 + shadcn/ui    | Prisma ORM             | Stripe                    |
+| React Hook Form + Zod         | Nodemailer + node-cron | Sentry (client + server)  |
+| Recharts + TanStack Table     | Pino logging           | Firebase Hosting + Heroku |
 
 ---
 
 ## Architecture
 
 ```
-Client (React SPA)
-       │
-       ├── REST API + WebSocket
-       ▼
-Server (Express.js)
-       │
-       ├── Firebase Admin (JWT Verification)
-       ├── Authorization Middleware
-       ▼
-Supabase (PostgreSQL)
+┌─────────────────────────────────────────────────────────┐
+│  Client (React SPA on Firebase Hosting)                 │
+│                                                         │
+│  Redux Store ◄── Socket.IO ◄──────────────────────┐     │
+│       │                                           │     │
+│       └── REST API (token + uid headers) ──────┐  │     │
+└────────────────────────────────────────────────┼──┼─────┘
+                                                 │  │
+                                        HTTP     │  │  WebSocket
+                                                 ▼  │
+┌────────────────────────────────────────────────────────┐
+│  Server (Express on Heroku)                            │
+│                                                        │
+│  Firebase Admin ──► authorize() middleware             │
+│       (JWT verify + role check)        │               │
+│                                        ▼               │
+│  Route handlers ──► Prisma ORM ──► PostgreSQL          │
+│                                   (Supabase)           │
+│                                                        │
+│  Sentry ◄── Pino logger ◄── all errors/requests        │
+│  Nodemailer + node-cron ◄── email & reminders          │
+│  Stripe webhooks ◄── payment events                    │
+└────────────────────────────────────────────────────────┘
 ```
 
-**Real-time sync**: Socket.IO broadcasts database changes to all connected clients, triggering automatic UI updates across sessions.
+**Real-time sync**: Socket.IO broadcasts domain events (`students`, `sessions`, `users`, `subjects`, `settings`) to all connected clients. Each event triggers a scoped data refresh via `RefreshFactory`, so the UI stays in sync without a full reload.
 
-**Authentication**: Firebase handles user auth, Express middleware verifies JWTs and resolves user roles from Supabase before allowing API access.
+**Authentication**: Firebase Auth issues JWTs on the client. Every API request includes the token and Firebase UID in headers. The server's `authorize()` middleware verifies the JWT with Firebase Admin SDK, looks up the user's role in Supabase, and rejects requests that don't match the required role — before any handler logic runs.
+
+**Observability**: Pino handles structured JSON request logging on the server. Sentry captures unhandled exceptions on both client (with session replay) and server (with full request traces).
 
 ---
 
