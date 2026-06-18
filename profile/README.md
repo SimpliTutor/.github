@@ -1,9 +1,9 @@
-![SimpliTutor Dashboard Light](https://github.com/SimpliTutor/.github/blob/main/images/lightmode.png?raw=true#gh-light-mode-only)
-![SimpliTutor Dashboard Dark](https://github.com/SimpliTutor/.github/blob/main/images/darkmode.png?raw=true#gh-dark-mode-only)
+![SimplTutor Dashboard Light](https://github.com/SimplTutor/.github/blob/main/images/lightmode.png?raw=true#gh-light-mode-only)
+![SimplTutor Dashboard Dark](https://github.com/SimplTutor/.github/blob/main/images/darkmode.png?raw=true#gh-dark-mode-only)
 
-## SimpliTutor
+## SimplTutor
 
-SimpliTutor is an operations platform for tutoring businesses. Session scheduling, student management, billing, and analytics—all in one place.
+SimplTutor is an operations platform for tutoring businesses. Session scheduling, student management, billing, and analytics—all in one place.
 
 - [x] Interactive calendar with double-booking prevention
 - [x] Session lifecycle tracking with tutor verification workflows
@@ -17,8 +17,8 @@ SimpliTutor is an operations platform for tutoring businesses. Session schedulin
 
 <p align="center">
   <img
-    src="https://github.com/SimpliTutor/.github/blob/main/images/demo2.png?raw=true"
-    alt="SimpliTutor Dashboard"
+    src="https://github.com/SimplTutor/.github/blob/main/images/demo2.png?raw=true"
+    alt="SimplTutor Dashboard"
     style="
       border-radius: 16px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.35);
@@ -28,8 +28,8 @@ SimpliTutor is an operations platform for tutoring businesses. Session schedulin
 </p>
 <p align="center">
   <img
-    src="https://github.com/SimpliTutor/.github/blob/main/images/demo1.png?raw=true"
-    alt="SimpliTutor Dashboard"
+    src="https://github.com/SimplTutor/.github/blob/main/images/demo1.png?raw=true"
+    alt="SimplTutor Dashboard"
     style="
       border-radius: 16px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.35);
